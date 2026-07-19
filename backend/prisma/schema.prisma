@@ -1,0 +1,117 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String       @id @default(uuid())
+  githubId     Int          @unique
+  username     String       @unique
+  email        String?
+  displayName  String?
+  avatarUrl    String?
+  accessToken  String       // GitHub access token (encrypt in production)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  repositories Repository[]
+
+  @@map("users")
+}
+
+model Repository {
+  id            String   @id @default(uuid())
+  githubRepoId  Int      @unique
+  owner         String
+  name          String
+  fullName      String   @unique
+  description   String?
+  language      String?
+  isPrivate     Boolean  @default(false)
+  reviewEnabled Boolean  @default(true)
+  webhookId     Int?     // GitHub webhook ID for cleanup
+  webhookSecret String?  // Per-repo webhook secret
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  userId        String
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  pullRequests  PullRequest[]
+
+  @@map("repositories")
+}
+
+model PullRequest {
+  id           String   @id @default(uuid())
+  number       Int
+  title        String
+  status       String   @default("open") // open, closed, merged
+  branch       String
+  baseBranch   String
+  authorLogin  String
+  githubUrl    String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  repositoryId String
+  repository   Repository @relation(fields: [repositoryId], references: [id], onDelete: Cascade)
+
+  reviews      Review[]
+
+  @@unique([repositoryId, number])
+  @@map("pull_requests")
+}
+
+model Review {
+  id          String   @id @default(uuid())
+  status      String   @default("pending") // pending, processing, completed, failed
+  score       Int?     // 0-100 overall quality score
+  summary     String?  // AI-generated summary
+  errorMsg    String?
+  duration    Int?     // Processing duration in ms
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  pullRequestId String
+  pullRequest   PullRequest @relation(fields: [pullRequestId], references: [id], onDelete: Cascade)
+
+  comments    ReviewComment[]
+
+  @@map("reviews")
+}
+
+model ReviewComment {
+  id          String   @id @default(uuid())
+  file        String   // File path
+  line        Int?     // Line number
+  endLine     Int?     // End line for multi-line comments
+  severity    String   // critical, warning, suggestion, praise
+  category    String   // security, performance, readability, architecture, reliability
+  body        String   // Comment content (markdown)
+  suggestion  String?  // Suggested code fix
+  createdAt   DateTime @default(now())
+
+  reviewId    String
+  review      Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@map("review_comments")
+}
+
+model Embedding {
+  id         String   @id @default(uuid())
+  filePath   String
+  chunk      String
+  // vector  Unsupported("vector(1536)") -- uncomment when pgvector is configured
+  repoId     String
+  createdAt  DateTime @default(now())
+
+  @@map("embeddings")
+}
