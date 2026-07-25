@@ -83,40 +83,40 @@ export function RepositoriesPage() {
               Connect Repository
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-lg max-h-[80vh]">
-            <DialogHeader>
+          <DialogContent className="sm:max-w-2xl max-h-[85vh] flex flex-col overflow-hidden">
+            <DialogHeader className="shrink-0">
               <DialogTitle>Connect a Repository</DialogTitle>
             </DialogHeader>
-            <div className="space-y-4">
+            <div className="flex flex-col gap-4 overflow-hidden min-h-0 flex-1 mt-2">
               {/* Search */}
-              <div className="relative">
+              <div className="relative shrink-0">
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <input
                   type="text"
                   placeholder="Search repositories..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full rounded-lg border bg-background py-2 pl-10 pr-4 text-sm outline-none focus:ring-2 focus:ring-primary/20"
+                  className="w-full rounded-lg border bg-background py-2.5 pl-10 pr-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                 />
               </div>
 
               {/* Repo list */}
-              <div className="max-h-[50vh] space-y-2 overflow-auto pr-1">
+              <div className="max-h-[55vh] overflow-y-auto space-y-2 pr-1 min-h-0 w-full">
                 {ghLoading ? (
                   Array.from({ length: 4 }).map((_, i) => (
                     <div
                       key={i}
                       className="flex items-center gap-3 rounded-lg border p-3"
                     >
-                      <Skeleton className="h-8 w-8 rounded" />
-                      <div className="flex-1 space-y-1">
+                      <Skeleton className="h-8 w-8 rounded shrink-0" />
+                      <div className="flex-1 space-y-1 min-w-0">
                         <Skeleton className="h-4 w-32" />
                         <Skeleton className="h-3 w-48" />
                       </div>
                     </div>
                   ))
                 ) : availableRepos.length === 0 ? (
-                  <p className="py-8 text-center text-sm text-muted-foreground">
+                  <p className="py-12 text-center text-sm text-muted-foreground">
                     {search
                       ? 'No matching repositories found.'
                       : 'All repositories are already connected.'}
@@ -125,21 +125,21 @@ export function RepositoriesPage() {
                   availableRepos.map((repo) => (
                     <div
                       key={repo.id}
-                      className="flex items-center justify-between gap-3 rounded-lg border p-3 transition-colors hover:bg-muted/50"
+                      className="flex items-center justify-between gap-3 rounded-lg border p-3.5 transition-all hover:bg-muted/60 hover:border-foreground/20"
                     >
-                      <div className="flex items-center gap-3 min-w-0">
-                        <div className="flex h-8 w-8 items-center justify-center rounded bg-muted">
+                      <div className="flex items-center gap-3 min-w-0 flex-1">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted border">
                           {repo.isPrivate ? (
                             <Lock className="h-4 w-4 text-muted-foreground" />
                           ) : (
                             <Globe className="h-4 w-4 text-muted-foreground" />
                           )}
                         </div>
-                        <div className="min-w-0">
-                          <p className="text-sm font-medium truncate">
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm font-medium truncate text-foreground">
                             {repo.fullName}
                           </p>
-                          <p className="text-xs text-muted-foreground truncate">
+                          <p className="text-xs text-muted-foreground truncate mt-0.5">
                             {repo.description || 'No description'}
                           </p>
                         </div>
@@ -149,6 +149,7 @@ export function RepositoriesPage() {
                         variant="outline"
                         onClick={() => handleConnect(repo)}
                         disabled={connectRepo.isPending}
+                        className="shrink-0 font-medium hover:bg-primary hover:text-primary-foreground transition-colors"
                       >
                         {connectRepo.isPending ? (
                           <Loader2 className="h-4 w-4 animate-spin" />
