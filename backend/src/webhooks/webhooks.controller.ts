@@ -8,7 +8,8 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
-import { WebhooksService, WebhookPayload } from './webhooks.service';
+import { WebhooksService } from './webhooks.service';
+import type { WebhookPayload } from './webhooks.service';
 import { WebhookSignatureGuard } from './webhook-signature.guard';
 
 @ApiTags('Webhooks')
