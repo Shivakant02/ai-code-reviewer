@@ -7,3 +7,9 @@ __pycache__/
 *.pyc
 .venv/
 .next/
+
+# IDE & Customizations
+.vscode/
+.agents/
+.gemini/
+*.swp
