@@ -40,7 +40,7 @@ async function bootstrap() {
 
   // Swagger
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('AI Code Review Assistant')
+    .setTitle('Code-Pilot API')
     .setDescription('API for AI-powered code review platform')
     .setVersion('1.0')
     .addBearerAuth()

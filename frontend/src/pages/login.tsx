@@ -22,7 +22,7 @@ export function LoginPage() {
 
         {/* Heading */}
         <h1 className="mb-2 text-center text-3xl font-bold tracking-tight text-foreground">
-          AI Code Review Assistant
+          Code-Pilot
         </h1>
         <p className="mb-10 text-center text-muted-foreground">
           Automated code reviews powered by AI. Get instant feedback on your

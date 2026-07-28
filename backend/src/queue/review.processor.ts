@@ -228,7 +228,7 @@ export class ReviewProcessor extends WorkerHost {
       (c) => c.severity === 'suggestion',
     ).length;
 
-    return `## 🤖 AI Code Review
+    return `## 🤖 Code-Pilot Review
 
 ${scoreEmoji} **Quality Score: ${result.score}/100**
 
@@ -243,6 +243,6 @@ ${result.summary}
 | **Total** | **${result.comments.length}** |
 
 ---
-*Reviewed by AI Code Review Assistant*`;
+*Reviewed by Code-Pilot*`;
   }
 }

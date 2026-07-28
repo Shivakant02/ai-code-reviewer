@@ -1,4 +1,4 @@
-# 🤖 AI Code Review Assistant
+# 🤖 Code-Pilot
 
 [![NestJS](https://img.shields.io/badge/Backend-NestJS_10-E0234E?style=flat-square&logo=nestjs&logoColor=white)](https://nestjs.com/)
 [![FastAPI](https://img.shields.io/badge/AI_Service-FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
@@ -8,7 +8,7 @@
 
 An enterprise-grade, automated GitHub Pull Request review assistant powered by **Google's Gemini AI** (`gemini-3.5-flash`, `gemini-3.6-flash`, and `gemini-2.5-flash`). 
 
-When a developer opens or updates a Pull Request on GitHub, the AI Code Review Assistant automatically analyzes the code diffs, scores the PR, generates an executive summary, and posts **inline, line-by-line code review comments directly onto the GitHub Pull Request** while maintaining a full review history in a sleek, dark-mode web dashboard.
+When a developer opens or updates a Pull Request on GitHub, Code-Pilot automatically analyzes the code diffs, scores the PR, generates an executive summary, and posts **inline, line-by-line code review comments directly onto the GitHub Pull Request** while maintaining a full review history in a sleek, dark-mode web dashboard.
 
 ---
 

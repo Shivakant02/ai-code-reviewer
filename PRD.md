@@ -1,4 +1,4 @@
-# AI Code Review Assistant (V1)
+# Code-Pilot (V1)
 
 ## Product Requirements Document (PRD)
 
@@ -6,7 +6,7 @@
 
 ## Project Name
 
-AI Code Review Assistant
+Code-Pilot
 
 ## Objective
 
@@ -35,7 +35,7 @@ Developers often spend time checking for:
 
 Many of these checks can be automated.
 
-The AI Code Review Assistant acts as the first reviewer by providing intelligent suggestions before a human reviewer begins reviewing the Pull Request.
+Code-Pilot acts as the first reviewer by providing intelligent suggestions before a human reviewer begins reviewing the Pull Request.
 
 ---
 
