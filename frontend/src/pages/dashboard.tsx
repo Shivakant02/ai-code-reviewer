@@ -76,7 +76,7 @@ export function DashboardPage() {
           Welcome back, {user?.displayName || user?.username} 👋
         </h1>
         <p className="text-muted-foreground mt-1">
-          Here's an overview of your AI code reviews.
+          Here's an overview of your Code-Pilot reviews.
         </p>
       </div>
 

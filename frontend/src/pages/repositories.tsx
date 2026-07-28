@@ -189,7 +189,7 @@ export function RepositoriesPage() {
               No repositories connected
             </h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Connect a GitHub repository to start getting AI code reviews.
+              Connect a GitHub repository to start getting Code-Pilot reviews.
             </p>
             <Button onClick={() => setDialogOpen(true)} className="gap-2">
               <Plus className="h-4 w-4" />

@@ -29,7 +29,7 @@ def create_app() -> FastAPI:
     settings = get_settings()
 
     app = FastAPI(
-        title="AI Code Review Service",
+        title="Code-Pilot AI Service",
         description="AI-powered code review service using Google Gemini",
         version="1.0.0",
         lifespan=lifespan,

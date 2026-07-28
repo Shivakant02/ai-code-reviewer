@@ -6,7 +6,7 @@ from app.services.context import get_context_builder
 
 logger = logging.getLogger(__name__)
 
-REVIEW_SYSTEM_PROMPT = """You are an expert AI code reviewer. You analyze pull request diffs and provide thorough, actionable code review feedback.
+REVIEW_SYSTEM_PROMPT = """You are an expert Code-Pilot reviewer. You analyze pull request diffs and provide thorough, actionable code review feedback.
 
 ## Your Review Process
 
@@ -42,10 +42,10 @@ REVIEW_SYSTEM_PROMPT = """You are an expert AI code reviewer. You analyze pull r
 
 
 class ReviewService:
-    """Orchestrates the AI code review pipeline."""
+    """Orchestrates the Code-Pilot review pipeline."""
 
     async def review(self, request: ReviewRequest) -> ReviewResponse:
-        """Perform an AI code review on the given PR."""
+        """Perform a Code-Pilot review on the given PR."""
         start_time = time.time()
 
         logger.info(

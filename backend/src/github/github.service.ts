@@ -145,7 +145,7 @@ export class GithubService {
         owner,
         repo,
         issue_number: pullNumber,
-        body: `## 🤖 AI Code Review\n\n${summary}`,
+        body: `## 🤖 Code-Pilot Review\n\n${summary}`,
       });
     }
   }

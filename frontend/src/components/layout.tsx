@@ -49,7 +49,7 @@ export function Layout() {
           </div>
           <div className="flex flex-col">
             <span className="text-sm font-semibold text-sidebar-foreground">
-              AI Code Review
+              Code-Pilot
             </span>
             <span className="text-xs text-muted-foreground">Assistant</span>
           </div>
@@ -143,7 +143,7 @@ export function Layout() {
         <header className="flex h-16 items-center justify-between border-b px-4 md:px-6">
           <div className="flex items-center gap-3 md:hidden">
             <Bot className="h-6 w-6 text-primary" />
-            <span className="font-semibold">AI Code Review</span>
+            <span className="font-semibold">Code-Pilot</span>
           </div>
 
           <div className="hidden md:block">
